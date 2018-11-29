@@ -16,8 +16,13 @@ from config import apikey
 files = ["tourneys", "games", "players", "regions", "elo", "characters"]
 
 
-for request in files:
-	curRequest = requests.get("https://api.ausmash.com.au/%s" % request, headers={"X-ApiKey": apikey})
-	jsonInfo = curRequest.json()
-	with open("%s.json" % request, "w", encoding="utf-8") as file:
+# for request in files:
+# 	curRequest = requests.get("https://api.ausmash.com.au/%s" % request, headers={"X-ApiKey": apikey})
+# 	jsonInfo = curRequest.json()
+# 	with open("%s.json" % request, "w", encoding="utf-8") as file:
+# 		json.dump(jsonInfo, file, indent=4, separators=(',',': '), sort_keys=True, ensure_ascii=False)
+
+eloRequest = requests.get("https://api.ausmash.com.au/tourneys/10640", headers={"X-ApiKey": apikey})
+jsonInfo = eloRequest.json()
+with open("bam10.json", "w", encoding="utf-8") as file:
 		json.dump(jsonInfo, file, indent=4, separators=(',',': '), sort_keys=True, ensure_ascii=False)
